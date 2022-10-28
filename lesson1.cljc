@@ -15,15 +15,22 @@
 
 (* 5 (+ 7  3) 2)
 
+66
+
 ;  *********************** string  text
 
 "isa"
 (def i "isa")
+i
+
 (def j "joseph")
+
 (def c "chris")
+
 
 (str i j c)
 
+(subs j 2)
 
 ; ******************* bool - true/false
 
@@ -34,28 +41,42 @@ false
 
 (not end-of-world?)
 
-(def sunny? false)
-(def raining? true)
-
-
 
 
 ; *************  map - a bag of values, each with a name to find it.
 
 {:first-name "joseph"
  :last-name "ylles"}
+(def joseph {:first-name "joseph"
+             :last-name "ylles"})
+joseph
+joseph2
+(def isa {:first-name "isa" :last-name "valdes"})
 
+isa
 
-(assoc 
- {:first-name "joseph"
-  :last-name "ylles"}
- :superpower
- "painting and kambo"
- )
+(:last-name isa)
+
+(assoc {:first-name "chris"} :superpower "guitar")
+
+(def joseph2
+(assoc joseph :superpower "painting and kambo"
+       :pet "punchi") 
+  )
+
+(dissoc joseph2 :pet)
+
 
 ; **************** vector/list - a list of values (indexed by a position number)
 
 ["red" "green" "blue"]
+
+(get ["red" "green" "blue"] 0)
+(get ["red" "green" "blue"] 1)
+(get ["red" "green" "blue"] 2)
+(get ["red" "green" "blue"] 3)
+
+
 (count [7 8 9 55 "ayuahaska" :kambo])
 
 [i j c]
