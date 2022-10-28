@@ -1,15 +1,12 @@
 
 
-; mathematics 
+(def state
+  (atom {:enabled false
+         :valves [0 0 0 0 0 0 0 0]}))
 
-(+ 1 2)
-(+ 3 1 2)
 
+(:enabled @state)
+(:valves @state)
 
-(* 1310 790)
+(get (:valves @state) 3)
 
-(* 5 8)
-
-(* 5 (+ 7  3))
-
-(* 5 (+ 7  3) 2)
