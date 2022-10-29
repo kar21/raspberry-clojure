@@ -22,6 +22,18 @@
 "isa"
 (def i "isa")
 i
+"♲♳♴♵♶♷♸"
+9600▁
+9601▂
+9602▃
+9603▄
+9604▅
+9605▆
+9606▇
+9607█
+9608▉
+9609▊
+9610▋
 
 (def j "joseph")
 
@@ -52,12 +64,13 @@ false
 joseph
 joseph2
 (def isa {:first-name "isa" :last-name "valdes"})
+(:first-name )
 
 isa
 
 (:last-name isa)
 
-(assoc {:first-name "chris"} :superpower "guitar")
+(assoc {:first-name "crist"} :superpower "guitar")
 
 (def joseph2
 (assoc joseph :superpower "painting and kambo"
@@ -76,13 +89,16 @@ isa
 (get ["red" "green" "blue"] 2)
 (get ["red" "green" "blue"] 3)
 
-
+(count participants)
 (count [7 8 9 55 "ayuahaska" :kambo])
 
 [i j c]
-
+(map :superpower participants)
 
 (get [i j c] 1)   ; 0 is the first position.
 
+(def participants [isa joseph2])
+(:last-name (get participants 0))
+(map  :last-name participants)
 
 
