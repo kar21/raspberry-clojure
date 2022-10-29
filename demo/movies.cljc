@@ -3,6 +3,7 @@
 (require '[babashka.curl :as curl])
 (require '[cheshire.core :as json])
 
+; https://imdb-api.com/API
 
 (def api-key "k_7pcj0max")
 
@@ -14,8 +15,7 @@
 (-> (curl/get url-movies)
     :body
     (json/parse-string true)
-    :items)  
-  )
+    :items))
 
 (def movies (get-movies))
 
