@@ -67,7 +67,7 @@ joseph2
 (:first-name )
 
 isa
-
+{:first-name "crist" :last-name "mendoza"}
 (:last-name isa)
 
 (assoc {:first-name "crist"} :superpower "guitar")
@@ -89,7 +89,20 @@ isa
 (get ["red" "green" "blue"] 2)
 (get ["red" "green" "blue"] 3)
 
+<<<<<<< HEAD
 (count participants)
+=======
+
+(def partipantes [isa joseph2 {:first-name "crist" :last-name "mendoza"}])
+(get partipantes 0)
+
+(:last-name (get partipantes 0))
+(map :last-name partipantes)
+
+(map :superpower partipantes)
+
+(count partipantes)
+>>>>>>> 03d1a0d83b4b2c0c2b601ba7009146779b4d62f5
 (count [7 8 9 55 "ayuahaska" :kambo])
 
 [i j c]
