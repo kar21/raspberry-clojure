@@ -24,5 +24,10 @@ movies
 ; movies with rank bigger than 7.0
 
 
+; change the rating of your favorite movie to 9.9
+; print the modified list with the new ratings.
+
+
+
 
 
