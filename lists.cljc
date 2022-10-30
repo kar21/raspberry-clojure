@@ -1,33 +1,30 @@
 (require ['demo.movies :refer [movies]])
 
 
-movies
 
+(slurp "/Users/Josephy/Documents/raspberry-clojure/movies.edn")
+
+(def m (slurp "/Users/Josephy/Documents/raspberry-clojure/movies.edn"))
+
+m
+(type m)
+(clojure.edn/read-string m)
+
+(def movies (clojure.edn/read-string m))
+
+(type movies)
+
+(get movies 0)
+(last movies)
+(type (last movies))
+(keys (last movies))
 (count movies)
-
-(clojure.pprint/print-table movies)
-
-
-; tasks:
-
-; all information of movie at index 17
-
-; show the year of all movies
-
-; year of first movie
-
-; year earliest movie 
-
-
-; movies from year 2022
-
-; movies with rank bigger than 7.0
-
-
-; change the rating of your favorite movie to 9.9
-; print the modified list with the new ratings.
-
-
-
-
-
+(map :title movies)
+(count (map :title movies))
+(clojure.pprint/print-table [:title :year] movies)
+(defn -ilikeit [m]
+(= "2021" (:year m)))
+(-ilikeit {:year 1999})
+(-ilikeit {:year 2021})
+(filter -ilikeit movies)
+(clojure.pprint/print-table [:title :imDbRating] movies)

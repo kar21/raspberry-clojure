@@ -22,18 +22,6 @@
 "isa"
 (def i "isa")
 i
-"♲♳♴♵♶♷♸"
-9600▁
-9601▂
-9602▃
-9603▄
-9604▅
-9605▆
-9606▇
-9607█
-9608▉
-9609▊
-9610▋
 
 (def j "joseph")
 
@@ -62,15 +50,36 @@ false
 (def joseph {:first-name "joseph"
              :last-name "ylles"})
 joseph
-joseph2
+joseph
+
+(keys joseph)
+(vals joseph)
 (def isa {:first-name "isa" :last-name "valdes"})
-(:first-name )
 
 isa
 {:first-name "crist" :last-name "mendoza"}
 (:last-name isa)
 
-(assoc {:first-name "crist"} :superpower "guitar")
+(assoc {:first-name "chris"} :superpower "guitar" :sexo "male" :age 38)
+
+(:age (assoc {:first-name "chris"} :superpower "guitar" :sexo "male" :age 38))
+(inc (:age (assoc {:first-name "chris"} :superpower "guitar" :sexo "male" :age 38)))
+
+(-> {:first-name "chris"} 
+    (assoc :age 38)
+    (assoc :last-name "mendoza"))
+
+(:last-name (-> {:first-name "chris"}
+                (assoc :age 38)
+                (assoc :last-name "mendoza")))
+(count (:first-name (-> {:first-name "chris"}
+                       (assoc :age 38)
+                       (assoc :last-name "mendoza"))))
+
+
+
+
+
 
 (def joseph2
 (assoc joseph :superpower "painting and kambo"
@@ -89,9 +98,6 @@ isa
 (get ["red" "green" "blue"] 2)
 (get ["red" "green" "blue"] 3)
 
-<<<<<<< HEAD
-(count participants)
-=======
 
 (def partipantes [isa joseph2 {:first-name "crist" :last-name "mendoza"}])
 (get partipantes 0)
@@ -102,16 +108,12 @@ isa
 (map :superpower partipantes)
 
 (count partipantes)
->>>>>>> 03d1a0d83b4b2c0c2b601ba7009146779b4d62f5
 (count [7 8 9 55 "ayuahaska" :kambo])
 
 [i j c]
-(map :superpower participants)
+
 
 (get [i j c] 1)   ; 0 is the first position.
 
-(def participants [isa joseph2])
-(:last-name (get participants 0))
-(map  :last-name participants)
 
 
