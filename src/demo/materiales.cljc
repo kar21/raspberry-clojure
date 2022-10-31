@@ -1,7 +1,10 @@
 (ns demo.materiales)
 
 
-(def products
+; write a function that gives me the discounted price (p=price d=discount.
+; example: price: 100. discount: 20. discounted price: 80.
+
+(def retail-products
   [{:name "baldosas azul"
     :price 18.99
     :dimension "m2"}
@@ -12,9 +15,6 @@
     :price 155
     :dimension "piece"}])
 
-
-; write a function that gives me the discounted price (p=price d=discount.
-; example: price: 100. discount: 20. discounted price: 80.
 
 
 
