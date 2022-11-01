@@ -91,7 +91,9 @@ price
 
 
 
+(:name {:name "joseph"})
 
+(get {:name "joseph"} :name )
 
 
 
