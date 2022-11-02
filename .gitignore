@@ -1,3 +1,6 @@
 .calva
 .clj-kondo
 .lsp
+.cpcache
+.nrepl-port
+render.scad

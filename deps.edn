@@ -1,0 +1,8 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+        scad-clj/scad-clj {:mvn/version "0.5.3"}}
+ :alias {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.5.3"}                         }
+                 :main-opts ["-m" "nrepl.cmdline"]}
+         :crb-dev {:exec-fn demo.crb/run}}
+ ;
+ }
