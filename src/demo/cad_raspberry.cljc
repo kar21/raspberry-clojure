@@ -42,6 +42,22 @@
 (def mid-block (->> (m/cube 6 6 1)
                     (m/translate [0 0 15])))
 
+(render mid-block)
+
+(render (m/cube 5 5 1))
+
+(render (m/union 
+         (m/cube 5 5 1)
+         (m/translate [0 0 15] 
+                      (m/cube 5 5 1))))
+
+(render (m/hull
+         (m/cube 5 5 1)
+         (m/translate [15 0 15]
+                      (m/cube 5 5 1))))
+
+
+
 (defn leg [v]
   (->> (m/cube 5 5 1)
        (m/translate v)
