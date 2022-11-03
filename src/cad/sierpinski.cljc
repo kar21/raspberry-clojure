@@ -1,4 +1,4 @@
-(ns demo.cad-sierpinski
+(ns cad.sierpinski
   (:require 
    [scad-clj.model :as m]
    [scad-clj.scad :refer [write-scad]]
