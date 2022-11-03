@@ -1,11 +1,14 @@
-(ns demo.cad-raspberry
-   (:require
-    [scad-clj.model :as m]
-    [scad-clj.scad :refer [write-scad]])
-  )
+(ns cad.demo
+  (:require
+   [scad-clj.model :as m]
+   [cad.helper :refer [render] :as confusion]
+   ))
 
-(defn render [what]
-  (spit "render.scad" (write-scad what)))
+; this 3 do exactly the same thing
+; (render x)
+; (confusion/render x)
+; (cad.helper/render x)
+
 
 ;; Small plug for a 21mm watering pipe (plants)
 
@@ -46,9 +49,9 @@
 
 (render (m/cube 5 5 1))
 
-(render (m/union 
+(render (m/union
          (m/cube 5 5 1)
-         (m/translate [0 0 15] 
+         (m/translate [15 0 15]
                       (m/cube 5 5 1))))
 
 (render (m/hull
@@ -67,3 +70,35 @@
                  (leg [15 -10 0])
                  (leg [-15 10 0])
                  (leg [-15 -10 0])))
+
+; hydroponic
+
+(def opening-diameter 55)
+(def outside-diameter 60)
+(def curve-radius 10)
+(def extender-height 20)
+
+(defn round-shape [diameter]
+  (let [circle (m/circle curve-radius)
+        circles (for [x [-1 1]
+                      y [-1 1]]
+                  (as-> [x y 0] $
+                    (map (partial * (- (/ diameter 2) curve-radius)) $)
+                    (m/translate $ circle)))]
+    (apply m/hull circles)))
+
+(render
+ (round-shape 10))
+
+(render
+ (m/difference (round-shape outside-diameter)
+               (round-shape opening-diameter)))
+
+
+(render (->> (m/difference (round-shape outside-diameter)
+                           (round-shape opening-diameter))
+             (m/extrude-linear {:height extender-height
+                                :center true
+                                :scale 0.9})))
+
+

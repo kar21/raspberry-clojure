@@ -35,6 +35,7 @@
           children (map #(m/translate % (sierpinski (dec level))) scales)]
       (apply m/union children))))
 
+(render (tetra))
 
 (render (sierpinski 0))
 
@@ -43,3 +44,7 @@
 (render (sierpinski 2))
 
 (render (sierpinski 5))
+
+
+(render (sierpinski 6))
+
