@@ -7,22 +7,38 @@
 ;; for monitoring the button. A buffer is used in conjunction with the handle in
 ;; order to describe the state of the leds.
 
+(def device         
+  (gpio/device "/dev/gpiochip0"))
 
-(with-open [device         (gpio/device "/dev/gpiochip0")
-            led-handle     (gpio/handle device
-                                        {17 {:gpio/state false
-                                             :gpio/tag   :led-1}
-                                         18 {:gpio/state true
-                                             :gpio/tag   :led-2}}
-                                        {:gpio/direction :output})
-            button-watcher (gpio/watcher device
-                                         {22 {:gpio/direction :input}})]
-  (let [buffer (gpio/buffer led-handle)]
-    (loop [leds (cycle [:led-1
-                        :led-2])]
-      (gpio/write led-handle
-                  (gpio/set-line+ buffer
-                                  {(first  leds) true
-                                   (second leds) false}))
-      (gpio/event button-watcher)
-      (recur (rest leds)))))
+(def  led-handle     (gpio/handle device
+                                  {17 {:gpio/state false
+                                       :gpio/tag   :led-1}
+                                   18 {:gpio/state true
+                                       :gpio/tag   :led-2}}
+                                  {:gpio/direction :output}) )
+
+(def buffer 
+   (gpio/buffer led-handle)
+  )
+
+ (gpio/write led-handle
+             (gpio/set-line+ buffer
+                                  ;{(first  leds) true
+                                  ; (second leds) true}
+                             {:led-1 false}))
+
+
+(with-open [
+           
+            ;button-watcher (gpio/watcher device
+            ;                             {22 {:gpio/direction :input}})
+            ]
+  (let [buffer]
+   ; (loop [leds (cycle [:led-1
+    ;                    :led-2])]
+     
+     ; (gpio/event button-watcher)
+      (println "setting leds")
+   ;   (recur (rest leds))
+      
+      ))
