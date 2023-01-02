@@ -4,7 +4,9 @@
         io.helins/linux.gpio {:mvn/version "2.0.1"}}
  :aliases
  {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "0.5.3"}}
-          :main-opts ["-m" "nrepl.cmdline"]}
+          :main-opts ["-m" "nrepl.cmdline"
+                      "-b" "0.0.0.0"
+                      "-p" "12345"]}
   :crb-dev {:exec-fn demo.crb/run}}
  ;
  }
