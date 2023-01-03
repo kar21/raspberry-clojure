@@ -86,3 +86,27 @@
    ;   (recur (rest leds))
       
       ))
+
+
+(gpio/close bar-handle)
+
+(def  bar-handle     (gpio/handle device
+                                  {26 {:gpio/state false
+                                       :gpio/tag   1}
+                                   13 {:gpio/state true
+                                       :gpio/tag   :2}
+                                   
+                                   
+                                   
+                                   }
+                                  {:gpio/direction :output}))
+
+(def buffer-bar
+  (gpio/buffer bar-handle))
+
+
+ (gpio/write bar-handle
+             (gpio/set-line+ buffer-bar 
+                             {1 false
+                              :2 false
+                              }))
