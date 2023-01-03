@@ -25,7 +25,51 @@
              (gpio/set-line+ buffer
                                   ;{(first  leds) true
                                   ; (second leds) true}
-                             {:led-1 false}))
+                             {:led-1 true}))
+
+(def state (atom true))
+
+
+(defn toggle-led []
+  (swap! state not)
+  (println "led-state: " @state)
+   (gpio/write led-handle
+               (gpio/set-line+ buffer
+                                  ;{(first  leds) true
+                                  ; (second leds) true}
+                               {:led-1 @state}))
+  )
+
+(toggle-led)
+
+(def watcher 
+  (gpio/watcher device
+             {21 {:gpio/tag       :button1
+                  :gpio/direction :input
+                  :gpio/edge-detection :falling
+                  }
+      })
+)
+
+
+ (while true
+   (println (if-some [event (gpio/event watcher
+                                        200)]
+              (do (str "Button for line has been pressed"
+                       (:gpio/nano-timestamp event)
+                       (:gpio/tag event))
+                   (toggle-led)
+                  )
+              
+              "Timeout !")))
+
+    (while true
+         (println (if-some [event (gpio/event watcher
+                                              200)]
+                    (str "Button for line has been pressed"
+                            (:gpio/nano-timestamp event)
+                            (:gpio/tag event))
+                    "Timeout !")))
 
 
 (with-open [
