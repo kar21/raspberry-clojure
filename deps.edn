@@ -7,6 +7,6 @@
           :main-opts ["-m" "nrepl.cmdline"
                       "-b" "0.0.0.0"
                       "-p" "12345"]}
-  :led1 {:exec-fn demo/startapp}}
+  :led1 {:exec-fn pi.demo/startapp}}
  ;
  }
