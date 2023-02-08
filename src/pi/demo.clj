@@ -190,6 +190,9 @@
 
 (defn start-app [& args]
   (on-click button-clip)
+  (loop []
+    (Thread/sleep 500)
+    (recur))
   )
 
 
